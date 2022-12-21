@@ -1,7 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
-// import coffeImg from '../../../../assets/coffee-01.svg'
+import { Counter } from '../../../../components/Counter'
 import { formatMoney } from '../../../../utils/formatters'
-import { Counter } from '../Counter'
+
 import {
   ActionsContainer,
   CardFooter,

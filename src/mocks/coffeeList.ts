@@ -1,3 +1,12 @@
+export interface CoffeProps {
+  id: string
+  name: string
+  description: string
+  price: number
+  tags: string[]
+  image: string
+}
+
 export const coffeesData = [
   {
     id: 'coffee-01',

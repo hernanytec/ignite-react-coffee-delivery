@@ -6,7 +6,9 @@ import { HeaderActions, HeaderContainer, Location } from './styles'
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={LogoCoffeeDelivery} alt="" />
+      <NavLink to="/">
+        <img src={LogoCoffeeDelivery} alt="" />
+      </NavLink>
 
       <HeaderActions>
         <Location>
