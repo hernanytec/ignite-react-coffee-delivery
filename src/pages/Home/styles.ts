@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import { defaultTheme } from '../../styles/theme/default'
-export const HomeContainer = styled.main``
+
+export const HomeContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  padding: 0 160px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 157px;
+`
 
 export const Intro = styled.div`
   display: flex;
@@ -16,15 +24,18 @@ export const IntroText = styled.div`
 `
 
 export const Title = styled.h1`
-  font-family: 'Baloo 2';
+  font-family: ${(props) => props.theme.fonts.fontFamily.Header};
   font-weight: 800;
+  line-height: 1.3;
   font-size: 48px;
   color: ${(props) => props.theme.colors['base-title']};
+  margin-bottom: 16px;
 `
 
 export const Subtitle = styled.h2`
   font-size: 20px;
   font-weight: 400;
+  line-height: 1.3;
   color: ${(props) => props.theme.colors['base-subtitle']};
 `
 

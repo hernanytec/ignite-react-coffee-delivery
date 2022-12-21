@@ -1,5 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import HomeCupCoffee from '../../assets/home-cup-coffee.svg'
+import { CoffeeList } from './components/CoffeeList'
 import { Header } from './components/Header'
 import {
   HomeContainer,
@@ -70,6 +71,8 @@ export function Home() {
 
           <img src={HomeCupCoffee} alt="Um copo grande de café" />
         </Intro>
+
+        <CoffeeList />
       </HomeContainer>
     </>
   )
