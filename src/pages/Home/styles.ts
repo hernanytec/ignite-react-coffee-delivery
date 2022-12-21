@@ -4,8 +4,6 @@ import { defaultTheme } from '../../styles/theme/default'
 export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
-  padding: 0 160px;
-  max-width: 1440px;
   margin: 0 auto;
   padding-bottom: 157px;
 `
@@ -47,16 +45,17 @@ interface IntroItemProps {
 
 export const ItemsContainer = styled.div`
   display: grid;
-  grid-template-columns: 290px 290px;
+  grid-template-columns: 1fr 1fr;
   margin-top: 66px;
-  row-gap: 40px;
-  column-gap: 20px;
+  row-gap: 20px;
+  column-gap: 40px;
 `
 
 export const IntroItem = styled.div<IntroItemProps>`
   display: flex;
   align-items: center;
   gap: 12px;
+  white-space: nowrap;
 
   .icon {
     color: ${(props) => props.theme.colors.white};

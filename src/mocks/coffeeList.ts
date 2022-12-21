@@ -93,7 +93,7 @@ export const coffeesData = [
   },
   {
     id: 'coffee-12',
-    name: 'Havainao',
+    name: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     price: 9.9,
     tags: ['especial'],
@@ -108,7 +108,7 @@ export const coffeesData = [
     image: 'coffees/Arabe.svg',
   },
   {
-    id: 'coffee-12',
+    id: 'coffee-14',
     name: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     price: 9.9,
