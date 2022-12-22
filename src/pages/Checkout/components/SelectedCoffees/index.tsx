@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { coffeesData } from '../../../../mocks/coffeeList'
 import { SelectedCoffee } from './components/SelectedCoffee'
 import {
@@ -35,7 +36,9 @@ export function SelectedCoffees() {
           </PriceTotal>
         </PriceInformationContainer>
 
-        <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
+        <NavLink to="/success">
+          <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
+        </NavLink>
       </SelectedProductsListFooter>
     </SelectedCoffeesContainer>
   )
