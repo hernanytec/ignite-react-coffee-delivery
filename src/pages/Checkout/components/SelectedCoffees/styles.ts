@@ -52,4 +52,9 @@ export const ConfirmOrderButton = styled.button`
   border: none;
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.yellow};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors['yellow-dark']};
+  }
 `

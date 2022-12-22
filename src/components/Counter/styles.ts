@@ -13,5 +13,10 @@ export const CounterContainer = styled.div`
   .icon {
     cursor: pointer;
     color: ${(props) => props.theme.colors.purple};
+    transition: color 0.2s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors['purple-dark']};
+    }
   }
 `

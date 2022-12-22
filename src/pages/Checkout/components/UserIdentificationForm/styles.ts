@@ -28,6 +28,10 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme.colors['base-input']};
   padding: 12px;
 
+  &:focus {
+    border: 1px solid ${(props) => props.theme.colors['yellow-dark']};
+  }
+
   &::placeholder {
     color: ${(props) => props.theme.colors['base-label']};
   }

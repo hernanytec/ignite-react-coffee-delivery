@@ -23,6 +23,12 @@ export const PaymentOption = styled.div<PaymentOptionProps>`
   padding: 16px;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors['base-button']};
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors['base-hover']};
+  }
 
   .icon {
     color: ${(props) => props.theme.colors.purple};

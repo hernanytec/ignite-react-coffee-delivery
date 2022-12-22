@@ -40,6 +40,11 @@ export const RemoveButtonContainer = styled.button`
   padding: 6.5px 8px;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors['base-text']};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors['base-hover']};
+  }
 
   .icon {
     color: ${(props) => props.theme.colors.purple};
