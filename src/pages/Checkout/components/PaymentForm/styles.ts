@@ -11,7 +11,11 @@ export const PaymentOptionsList = styled.div`
   gap: 12px;
 `
 
-export const PaymentOption = styled.div`
+interface PaymentOptionProps {
+  selected?: boolean
+}
+
+export const PaymentOption = styled.div<PaymentOptionProps>`
   flex: 1;
   display: flex;
   align-items: center;
@@ -28,4 +32,11 @@ export const PaymentOption = styled.div`
     font-size: 12px;
     text-transform: uppercase;
   }
+
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors['purple-light'] : ''};
+  border: ${(props) =>
+    props.selected
+      ? `1px solid ${props.theme.colors.purple}`
+      : '1px solid transparent'};
 `
