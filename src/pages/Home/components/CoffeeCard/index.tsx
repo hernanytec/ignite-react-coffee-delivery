@@ -1,5 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
+import { useState } from 'react'
 import { Counter } from '../../../../components/Counter'
+import { CoffeeProps } from '../../../../mocks/coffeeList'
 import { formatMoney } from '../../../../utils/formatters'
 
 import {
@@ -14,17 +16,30 @@ import {
 } from './styles'
 
 interface CoffeeCardProps {
-  coffee: {
-    id: string
-    name: string
-    description: string
-    price: number
-    tags?: string[]
-    image: string
-  }
+  coffee: CoffeeProps
+  onAddToCart: (coffee: CoffeeProps, counter: number) => void
+  onIncrement: (coffee: CoffeeProps) => void
+  onDecrement: (coffee: CoffeeProps) => void
 }
 
-export function CoffeeCard({ coffee }: CoffeeCardProps) {
+export function CoffeeCard({
+  coffee,
+  onAddToCart,
+  onIncrement,
+  onDecrement,
+}: CoffeeCardProps) {
+  const [counterValue, setCounterValue] = useState(1)
+
+  function handleIncrement() {
+    setCounterValue((state) => state + 1)
+    onIncrement(coffee)
+  }
+
+  function handleDecrement() {
+    setCounterValue((state) => Math.max(0, state - 1))
+    onDecrement(coffee)
+  }
+
   return (
     <CoffeeCardContainer>
       <img className="cup-coffee" src={coffee.image} alt="" />
@@ -44,8 +59,12 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         <CoffeePrice>{formatMoney(coffee.price)}</CoffeePrice>
 
         <ActionsContainer>
-          <Counter />
-          <CartButton>
+          <Counter
+            value={counterValue}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+          />
+          <CartButton onClick={() => onAddToCart(coffee, counterValue)}>
             <ShoppingCart className="icon" weight="fill" size={22} />
           </CartButton>
         </ActionsContainer>

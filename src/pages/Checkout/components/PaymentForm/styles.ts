@@ -25,6 +25,7 @@ export const PaymentOption = styled.div<PaymentOptionProps>`
   background-color: ${(props) => props.theme.colors['base-button']};
   cursor: pointer;
   transition: background-color 0.2s;
+  white-space: nowrap;
 
   &:hover {
     background-color: ${(props) => props.theme.colors['base-hover']};

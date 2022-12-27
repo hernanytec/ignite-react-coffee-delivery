@@ -28,6 +28,10 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme.colors['base-input']};
   padding: 12px;
 
+  &::before {
+    content: 'My content'; /* 11 different input types will render this */
+  }
+
   &:focus {
     border: 1px solid ${(props) => props.theme.colors['yellow-dark']};
   }

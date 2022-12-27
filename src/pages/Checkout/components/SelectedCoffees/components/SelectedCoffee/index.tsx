@@ -1,6 +1,6 @@
 import { Trash } from 'phosphor-react'
 import { Counter } from '../../../../../../components/Counter'
-import { CoffeProps } from '../../../../../../mocks/coffeeList'
+import { CoffeeProps } from '../../../../../../mocks/coffeeList'
 import { formatMoney } from '../../../../../../utils/formatters'
 import {
   ActionButtons,
@@ -10,7 +10,7 @@ import {
 } from './styles'
 
 interface SelectedCoffeeProps {
-  coffee: CoffeProps
+  coffee: CoffeeProps
 }
 
 export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
@@ -22,7 +22,7 @@ export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
         <span>{coffee.name}</span>
 
         <ActionButtons>
-          <Counter />
+          <Counter value={1} onDecrement={() => {}} onIncrement={() => {}} />
 
           <RemoveButtonContainer>
             <Trash className="icon" />
