@@ -3,6 +3,7 @@ import {
   addItemToCartAction,
   decrementItemInCartAction,
   incrementItemInCartAction,
+  removeItemFromCartAction,
 } from '../reducers/orders/actions'
 import { CartItem, OrderReducer } from '../reducers/orders/reducers'
 
@@ -11,6 +12,7 @@ interface OrderContextType {
   addItemToCart: (cartItem: CartItem) => void
   decrementItemInCart: (cartItemId: string) => void
   incrementItemInCart: (cartItemId: string) => void
+  removeItemFromCart: (cartItemId: string) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -36,6 +38,10 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(decrementItemInCartAction(cartItemId))
   }
 
+  function removeItemFromCart(cartItemId: string) {
+    dispatch(removeItemFromCartAction(cartItemId))
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -43,6 +49,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         addItemToCart,
         incrementItemInCart,
         decrementItemInCart,
+        removeItemFromCart,
       }}
     >
       {children}

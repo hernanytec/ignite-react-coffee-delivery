@@ -50,6 +50,17 @@ export function OrderReducer(state: OrderState, action: any) {
         }
       })
     }
+    case Actions.REMOVE_ITEM_FROM_CART: {
+      const index = state.cartList.findIndex(
+        (item) => item.coffee.id === action.payload,
+      )
+
+      if (index === -1) return state
+
+      return produce(state, (draft) => {
+        draft.cartList.splice(index, 1)
+      })
+    }
     default:
       return state
   }
