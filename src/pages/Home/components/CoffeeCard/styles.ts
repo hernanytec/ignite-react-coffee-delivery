@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const CoffeeCardContainer = styled.div`
+interface CoffeeCardContainerProps {
+  selected: boolean
+}
+
+export const CoffeeCardContainer = styled.div<CoffeeCardContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +14,10 @@ export const CoffeeCardContainer = styled.div`
   padding: 0 24px 20px 24px;
   border-top-right-radius: 36px;
   border-bottom-left-radius: 36px;
+  border: 1px solid;
+  border-color: ${(props) =>
+    props.selected ? props.theme.colors.yellow : 'transparent'};
+  transition: color 0.2s;
 
   .cup-coffee {
     margin-top: -20px;

@@ -17,6 +17,7 @@ import {
 
 interface CoffeeCardProps {
   coffee: CoffeeProps
+  selected?: boolean
   onAddToCart: (coffee: CoffeeProps, counter: number) => void
   onIncrement: (coffee: CoffeeProps) => void
   onDecrement: (coffee: CoffeeProps) => void
@@ -24,6 +25,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({
   coffee,
+  selected = false,
   onAddToCart,
   onIncrement,
   onDecrement,
@@ -41,7 +43,7 @@ export function CoffeeCard({
   }
 
   return (
-    <CoffeeCardContainer>
+    <CoffeeCardContainer selected={selected}>
       <img className="cup-coffee" src={coffee.image} alt="" />
 
       <TagsContainer>

@@ -13,10 +13,17 @@ export interface OrderState {
 
 export function OrderReducer(state: OrderState, action: any) {
   switch (action.type) {
-    case Actions.ADD_ITEM_TO_CART:
+    case Actions.ADD_ITEM_TO_CART: {
+      const cartItem = state.cartList.find(
+        (cartItem) => cartItem.coffee.id === action.payload.coffee.id,
+      )
+
+      if (cartItem || action.payload.counter === 0) return state
+
       return produce(state, (draft) => {
         draft.cartList.push(action.payload)
       })
+    }
     case Actions.INCREMENT_ITEM_IN_CART: {
       const index = state.cartList.findIndex(
         (item) => item.coffee.id === action.payload,
@@ -37,6 +44,10 @@ export function OrderReducer(state: OrderState, action: any) {
 
       return produce(state, (draft) => {
         draft.cartList[index].counter -= 1
+
+        if (draft.cartList[index].counter <= 0) {
+          draft.cartList.splice(index, 1)
+        }
       })
     }
     default:

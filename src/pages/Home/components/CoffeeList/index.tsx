@@ -5,7 +5,7 @@ import { CoffeeCard } from '../CoffeeCard'
 import { CardsContainer, CoffeeListContainer, CoffeeListTitle } from './styles'
 
 export function CoffeeList() {
-  const { addItemToCart, decrementItemInCart, incrementItemInCart } =
+  const { cartList, addItemToCart, decrementItemInCart, incrementItemInCart } =
     useContext(OrderContext)
 
   function handleAddItemToCart(coffee: CoffeeProps, counter: number) {
@@ -34,6 +34,7 @@ export function CoffeeList() {
           <CoffeeCard
             key={coffe.id}
             coffee={coffe}
+            selected={!!cartList.find((item) => item.coffee.id === coffe.id)}
             onAddToCart={handleAddItemToCart}
             onIncrement={handleIncrement}
             onDecrement={handleDecrement}
