@@ -7,6 +7,7 @@ export const SelectedCoffeesContainer = styled.div`
   border-top-right-radius: 44px;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 44px;
+  min-width: 440px;
 `
 
 export const SelectedProductsListFooter = styled.div`
@@ -56,5 +57,18 @@ export const ConfirmOrderButton = styled.button`
 
   &:hover {
     background-color: ${(props) => props.theme.colors['yellow-dark']};
+  }
+`
+
+export const EmptyCartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    padding: 12px 0;
+    width: 250px;
   }
 `

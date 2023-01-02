@@ -11,9 +11,19 @@ import {
 
 interface SelectedCoffeeProps {
   coffee: CoffeeProps
+  counter: number
+  onIncrement: () => void
+  onDecrement: () => void
+  onRemove: () => void
 }
 
-export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
+export function SelectedCoffee({
+  coffee,
+  counter,
+  onIncrement,
+  onDecrement,
+  onRemove,
+}: SelectedCoffeeProps) {
   return (
     <SelectedCoffeeContainer>
       <img src={coffee.image} alt="" />
@@ -22,9 +32,13 @@ export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
         <span>{coffee.name}</span>
 
         <ActionButtons>
-          <Counter value={1} onDecrement={() => {}} onIncrement={() => {}} />
+          <Counter
+            value={counter}
+            onDecrement={() => onDecrement()}
+            onIncrement={() => onIncrement()}
+          />
 
-          <RemoveButtonContainer>
+          <RemoveButtonContainer onClick={onRemove}>
             <Trash className="icon" />
             Remover
           </RemoveButtonContainer>
@@ -32,7 +46,7 @@ export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
       </ActionsContainer>
 
       <div>
-        <span>R$ {formatMoney(coffee.price)}</span>
+        <span>R$ {formatMoney(coffee.price * counter)}</span>
       </div>
     </SelectedCoffeeContainer>
   )
