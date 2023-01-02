@@ -17,7 +17,7 @@ export const CoffeeCardContainer = styled.div<CoffeeCardContainerProps>`
   border: 1px solid;
   border-color: ${(props) =>
     props.selected ? props.theme.colors.yellow : 'transparent'};
-  transition: color 0.2s;
+  transition: border-color 0.2s;
 
   .cup-coffee {
     margin-top: -20px;
