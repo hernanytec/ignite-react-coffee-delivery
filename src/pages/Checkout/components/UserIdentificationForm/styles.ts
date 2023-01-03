@@ -4,20 +4,20 @@ export const FormContainer = styled.div`
   padding: 40px;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors['base-card']};
+`
 
-  form {
-    display: grid;
-    grid-template-columns: 200px 1fr 60px;
-    row-gap: 16px;
-    column-gap: 12px;
+export const FieldsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  row-gap: 16px;
+  column-gap: 12px;
 
-    .col-span-3 {
-      grid-column: span 3;
-    }
+  .col-span-3 {
+    grid-column: span 3;
+  }
 
-    .col-span-2 {
-      grid-column: span 2;
-    }
+  .col-span-2 {
+    grid-column: span 2;
   }
 `
 

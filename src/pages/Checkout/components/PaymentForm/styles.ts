@@ -15,7 +15,7 @@ interface PaymentOptionProps {
   selected?: boolean
 }
 
-export const PaymentOption = styled.div<PaymentOptionProps>`
+export const PaymentOption = styled.label<PaymentOptionProps>`
   flex: 1;
   display: flex;
   align-items: center;
@@ -27,8 +27,13 @@ export const PaymentOption = styled.div<PaymentOptionProps>`
   transition: background-color 0.2s;
   white-space: nowrap;
 
+  input {
+    display: none;
+  }
+
   &:hover {
-    background-color: ${(props) => props.theme.colors['base-hover']};
+    background-color: ${(props) =>
+      !props.selected ? props.theme.colors['base-hover'] : ''};
   }
 
   .icon {

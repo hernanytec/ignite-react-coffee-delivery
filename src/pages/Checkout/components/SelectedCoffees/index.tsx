@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
 import EmptyCart from '../../../../assets/empty-cart.svg'
 import { OrderContext } from '../../../../contexts/OrderContext'
@@ -15,6 +16,8 @@ import {
 } from './styles'
 
 export function SelectedCoffees() {
+  const { formState } = useFormContext()
+
   const {
     cartList,
     incrementItemInCart,
@@ -71,9 +74,9 @@ export function SelectedCoffees() {
             </PriceTotal>
           </PriceInformationContainer>
 
-          <NavLink to="/success">
-            <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
-          </NavLink>
+          <ConfirmOrderButton type="submit" disabled={!formState.isValid}>
+            Confirmar pedido
+          </ConfirmOrderButton>
         </SelectedProductsListFooter>
       )}
     </SelectedCoffeesContainer>

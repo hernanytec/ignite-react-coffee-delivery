@@ -1,8 +1,11 @@
 import { MapPinLine } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 import { FormHeader } from '../FormHeader'
-import { FormContainer, Input } from './styles'
+import { FieldsContainer, FormContainer, Input } from './styles'
 
 export function UserIdentificationForm() {
+  const { register } = useFormContext()
+
   return (
     <FormContainer>
       <FormHeader
@@ -12,15 +15,24 @@ export function UserIdentificationForm() {
         iconColor="yellow-dark"
       />
 
-      <form>
-        <Input placeholder="CEP" />
-        <Input className="col-span-3" placeholder="Rua" />
-        <Input placeholder="Número" />
-        <Input className="col-span-2" placeholder="Complemento" />
-        <Input placeholder="Rua" />
-        <Input placeholder="Bairro" />
-        <Input placeholder="UF" />
-      </form>
+      <FieldsContainer>
+        <Input placeholder="CEP" {...register('cep')} />
+        <Input
+          className="col-span-3"
+          placeholder="Rua"
+          required
+          {...register('rua')}
+        />
+        <Input placeholder="Número" {...register('numero')} />
+        <Input
+          className="col-span-2"
+          placeholder="Complemento"
+          {...register('complemento')}
+        />
+        <Input placeholder="Bairro" {...register('bairro')} />
+        <Input placeholder="Cidade" {...register('cidade')} />
+        <Input placeholder="UF" {...register('uf')} />
+      </FieldsContainer>
     </FormContainer>
   )
 }

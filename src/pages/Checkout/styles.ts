@@ -2,8 +2,11 @@ import styled from 'styled-components'
 
 export const CheckoutContainer = styled.main`
   margin-top: 40px;
-  display: flex;
-  gap: 32px;
+
+  form {
+    display: flex;
+    gap: 32px;
+  }
 `
 
 export const SectionTitle = styled.div`

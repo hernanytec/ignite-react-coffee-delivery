@@ -1,4 +1,5 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 import {
   paymentOptionsData,
   paymentType,
@@ -16,6 +17,10 @@ interface paymentIconProps {
 }
 
 export function PaymentForm() {
+  const { register, watch } = useFormContext()
+
+  const pagamento = watch('pagamento')
+
   const PaymentTypeIcon = ({ type }: paymentIconProps) => {
     if (type === 'CREDITO') return <CreditCard className="icon" />
 
@@ -37,7 +42,15 @@ export function PaymentForm() {
 
       <PaymentOptionsList>
         {paymentOptionsData.map((paymentOption) => (
-          <PaymentOption key={paymentOption.type}>
+          <PaymentOption
+            selected={pagamento === paymentOption.type}
+            key={paymentOption.type}
+          >
+            <input
+              value={paymentOption.type}
+              type="radio"
+              {...register('pagamento')}
+            />
             <PaymentTypeIcon type={paymentOption.type} />
             <span>{paymentOption.label}</span>
           </PaymentOption>
