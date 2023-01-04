@@ -27,7 +27,7 @@ export function Header() {
       <HeaderActions>
         <Location>
           <MapPin className="icon" weight="fill" size={22} />
-          <span>Porto Alegre, RS</span>
+          <span>Acaraú, CE</span>
         </Location>
 
         <NavLink to="/checkout">
