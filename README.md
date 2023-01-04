@@ -1,7 +1,8 @@
 # Coffee Delivery
 Uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia
 
-### Link para acesso: https://ignite-react-coffee-delivery.vercel.app/
+### [Clique aqui para acessar o figma](https://www.figma.com/file/muoaqIVeHOmRcio1aqtCst/Coffee-Delivery-(Copy)?node-id=2%3A1550&t=gIiYmKiXrjUa3OTK-0)
+### [Clique aqui para acessar o projeto](https://ignite-react-coffee-delivery.vercel.app/)
 
 Conteúdos praticados:
  - [x] Styled-components
