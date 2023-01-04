@@ -5,6 +5,7 @@ import {
   decrementItemInCartAction,
   incrementItemInCartAction,
   removeItemFromCartAction,
+  resetOrderContextAction,
   setCheckoutInfoAction,
 } from '../reducers/orders/actions'
 import { CartItem, OrderReducer } from '../reducers/orders/reducers'
@@ -17,6 +18,7 @@ interface OrderContextType {
   incrementItemInCart: (cartItemId: string) => void
   removeItemFromCart: (cartItemId: string) => void
   setCheckoutInfo: (info: CheckoutFormData) => void
+  resetOrderContext: () => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -50,6 +52,10 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(setCheckoutInfoAction(info))
   }
 
+  function resetOrderContext() {
+    dispatch(resetOrderContextAction())
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -60,6 +66,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         decrementItemInCart,
         removeItemFromCart,
         setCheckoutInfo,
+        resetOrderContext,
       }}
     >
       {children}

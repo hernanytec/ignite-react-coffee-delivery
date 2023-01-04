@@ -32,6 +32,7 @@ export function SelectedCoffees() {
   )
 
   const cep = watch('cep')
+  const deliveryFee = calculateDeliveryFee(cep)
 
   return (
     <SelectedCoffeesContainer>
@@ -66,16 +67,16 @@ export function SelectedCoffees() {
               <span>{formatMoney(totalItemsCost)}</span>
             </PriceItem>
 
-            {cep && (
+            {!!deliveryFee && (
               <PriceItem>
                 <span>Entrega</span>
-                <span>{formatMoney(randomNumberGenerator({ max: 10 }))}</span>
+                <span>{formatMoney(deliveryFee)}</span>
               </PriceItem>
             )}
 
             <PriceTotal>
               <span>Total</span>
-              <span>{formatMoney(totalItemsCost)}</span>
+              <span>{formatMoney(totalItemsCost + deliveryFee)}</span>
             </PriceTotal>
           </PriceInformationContainer>
 
@@ -86,4 +87,11 @@ export function SelectedCoffees() {
       )}
     </SelectedCoffeesContainer>
   )
+}
+
+function calculateDeliveryFee(cep: string) {
+  const isValidCep = cep.length === 8
+  if (!isValidCep) return 0
+
+  return randomNumberGenerator({ max: 10 })
 }

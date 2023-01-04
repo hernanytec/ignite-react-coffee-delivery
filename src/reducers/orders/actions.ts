@@ -9,6 +9,7 @@ export enum Actions {
   INCREMENT_ITEM_IN_CART = 'INCREMENT_ITEM_IN_CART',
   DECREMENT_ITEM_IN_CART = 'DECREMENT_ITEM_IN_CART',
   SET_CHECKOUT_INFO = 'SET_CHECKOUT_INFO',
+  RESET_ORDER_CONTEXT = 'RESET_ORDER_CONTEXT',
 }
 
 export function addItemToCartAction(cartItem: CartItem) {
@@ -43,5 +44,11 @@ export function setCheckoutInfoAction(info: CheckoutFormData) {
   return {
     type: Actions.SET_CHECKOUT_INFO,
     payload: info,
+  }
+}
+
+export function resetOrderContextAction() {
+  return {
+    type: Actions.RESET_ORDER_CONTEXT,
   }
 }

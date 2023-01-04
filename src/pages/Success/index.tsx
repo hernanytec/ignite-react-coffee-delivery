@@ -1,5 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Delivery from '../../assets/delivery.svg'
 import { OrderContext } from '../../contexts/OrderContext'
 import {
@@ -12,17 +13,32 @@ import {
   SuccessContainer,
 } from './styles'
 
-export function Success() {
-  const { checkoutInfo } = useContext(OrderContext)
+const paymentOptions = {
+  CREDITO: 'Cartão de Crédito',
+  DEBITO: 'Cartão de Débito',
+  DINHEIRO: 'Dinheiro',
+}
 
-  const paymentOptions = {
-    CREDITO: 'Cartão de Crédito',
-    DEBITO: 'Cartão de Débito',
-    DINHEIRO: 'Dinheiro',
-  }
+export function Success() {
+  const { checkoutInfo, resetOrderContext } = useContext(OrderContext)
+  const navigate = useNavigate()
 
   const paymentMethod =
     paymentOptions[checkoutInfo?.pagamento!] || 'Não informado'
+
+  const shouldResetContext = useRef(false)
+
+  useEffect(() => {
+    if (!checkoutInfo) navigate('/')
+
+    return () => {
+      if (shouldResetContext.current) {
+        resetOrderContext()
+      } else {
+        shouldResetContext.current = true
+      }
+    }
+  }, [checkoutInfo, navigate, resetOrderContext])
 
   return (
     <SuccessContainer>

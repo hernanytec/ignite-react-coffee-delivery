@@ -68,6 +68,12 @@ export function OrderReducer(state: OrderState, action: any) {
         draft.checkoutInfo = { ...action.payload }
       })
     }
+    case Actions.RESET_ORDER_CONTEXT: {
+      return produce(state, (draft) => {
+        draft.checkoutInfo = undefined
+        draft.cartList = []
+      })
+    }
     default:
       return state
   }
