@@ -23,7 +23,7 @@ const checkoutFormValidationSchema = z.object({
 export type CheckoutFormData = z.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
-  const { setCheckoutInfo } = useContext(OrderContext)
+  const { setCheckoutInfo, checkoutInfo } = useContext(OrderContext)
   const navigate = useNavigate()
 
   const checkoutForm = useForm<CheckoutFormData>({
@@ -36,6 +36,7 @@ export function Checkout() {
       numero: '',
       rua: '',
       uf: '',
+      ...checkoutInfo,
     },
   })
 

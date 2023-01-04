@@ -1,5 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
 import Delivery from '../../assets/delivery.svg'
+import { OrderContext } from '../../contexts/OrderContext'
 import {
   DetailsSection,
   IconWrapper,
@@ -11,6 +13,17 @@ import {
 } from './styles'
 
 export function Success() {
+  const { checkoutInfo } = useContext(OrderContext)
+
+  const paymentOptions = {
+    CREDITO: 'Cartão de Crédito',
+    DEBITO: 'Cartão de Débito',
+    DINHEIRO: 'Dinheiro',
+  }
+
+  const paymentMethod =
+    paymentOptions[checkoutInfo?.pagamento!] || 'Não informado'
+
   return (
     <SuccessContainer>
       <OrderInfoContainer>
@@ -27,9 +40,15 @@ export function Success() {
               <OrderInfoDetails>
                 <span>
                   Entrega em
-                  <span className="bold"> Rua João Daniel Martinelli, 102</span>
+                  <span className="bold">
+                    {' '}
+                    {checkoutInfo?.rua}, {checkoutInfo?.numero}
+                  </span>
                 </span>
-                <span> Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {checkoutInfo?.bairro} - {checkoutInfo?.cidade},{' '}
+                  {checkoutInfo?.uf}
+                </span>
               </OrderInfoDetails>
             </OrderInfoItem>
 
@@ -39,10 +58,7 @@ export function Success() {
               </IconWrapper>
 
               <OrderInfoDetails>
-                <span>
-                  Entrega em
-                  <span className="bold"> Rua João Daniel Martinelli, 102</span>
-                </span>
+                <span>Previsão de entrega</span>
                 <span className="bold">20 - 30 min</span>
               </OrderInfoDetails>
             </OrderInfoItem>
@@ -54,7 +70,7 @@ export function Success() {
 
               <OrderInfoDetails>
                 <span>Pagamento na entrega</span>
-                <span className="bold">Cartão de Crédito</span>
+                <span className="bold">{paymentMethod}</span>
               </OrderInfoDetails>
             </OrderInfoItem>
           </OrderInfoCard>
