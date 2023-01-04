@@ -1,6 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import * as z from 'zod'
+import { OrderContext } from '../../contexts/OrderContext'
 import { PaymentForm } from './components/PaymentForm'
 import { SelectedCoffees } from './components/SelectedCoffees'
 import { UserIdentificationForm } from './components/UserIdentificationForm'
@@ -8,24 +11,27 @@ import { CheckoutContainer, Section, SectionTitle } from './styles'
 
 const checkoutFormValidationSchema = z.object({
   cep: z.string().length(8),
-  rua: z.string(),
-  numero: z.string(),
+  rua: z.string().min(1),
+  numero: z.string().min(1),
   complemento: z.string().optional(),
-  bairro: z.string(),
-  cidadde: z.string(),
+  bairro: z.string().min(1),
+  cidade: z.string().min(1),
   uf: z.string().length(2),
   pagamento: z.enum(['CREDITO', 'DEBITO', 'DINHEIRO']),
 })
 
-type CheckoutFormData = z.infer<typeof checkoutFormValidationSchema>
+export type CheckoutFormData = z.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
+  const { setCheckoutInfo } = useContext(OrderContext)
+  const navigate = useNavigate()
+
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormValidationSchema),
     defaultValues: {
       cep: '',
       bairro: '',
-      cidadde: '',
+      cidade: '',
       complemento: '',
       numero: '',
       rua: '',
@@ -36,7 +42,8 @@ export function Checkout() {
   const { handleSubmit } = checkoutForm
 
   function onSubmitCheckout(data: CheckoutFormData) {
-    console.log(data)
+    setCheckoutInfo(data)
+    navigate('/success')
   }
 
   return (

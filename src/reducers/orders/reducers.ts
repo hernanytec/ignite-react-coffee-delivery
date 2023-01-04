@@ -1,5 +1,6 @@
 import produce from 'immer'
 import { CoffeeProps } from '../../mocks/coffeeList'
+import { CheckoutFormData } from '../../pages/Checkout'
 import { Actions } from './actions'
 
 export interface CartItem {
@@ -9,6 +10,7 @@ export interface CartItem {
 
 export interface OrderState {
   cartList: CartItem[]
+  checkoutInfo?: CheckoutFormData
 }
 
 export function OrderReducer(state: OrderState, action: any) {
@@ -59,6 +61,11 @@ export function OrderReducer(state: OrderState, action: any) {
 
       return produce(state, (draft) => {
         draft.cartList.splice(index, 1)
+      })
+    }
+    case Actions.SET_CHECKOUT_INFO: {
+      return produce(state, (draft) => {
+        draft.checkoutInfo = { ...action.payload }
       })
     }
     default:

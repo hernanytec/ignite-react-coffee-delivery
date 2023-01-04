@@ -17,12 +17,7 @@ export function UserIdentificationForm() {
 
       <FieldsContainer>
         <Input placeholder="CEP" {...register('cep')} />
-        <Input
-          className="col-span-3"
-          placeholder="Rua"
-          required
-          {...register('rua')}
-        />
+        <Input className="col-span-3" placeholder="Rua" {...register('rua')} />
         <Input placeholder="Número" {...register('numero')} />
         <Input
           className="col-span-2"

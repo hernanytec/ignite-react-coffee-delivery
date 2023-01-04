@@ -1,8 +1,8 @@
 import currency from 'currency.js'
 
-export function formatMoney(value: string | number) {
+export function formatMoney(value: string | number, symbol = 'R$ ') {
   return currency(value, {
-    symbol: '',
+    symbol,
     separator: '.',
     decimal: ',',
   }).format()

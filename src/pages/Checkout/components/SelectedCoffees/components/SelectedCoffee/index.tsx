@@ -46,7 +46,7 @@ export function SelectedCoffee({
       </ActionsContainer>
 
       <div>
-        <span>R$ {formatMoney(coffee.price * counter)}</span>
+        <span>{formatMoney(coffee.price * counter)}</span>
       </div>
     </SelectedCoffeeContainer>
   )

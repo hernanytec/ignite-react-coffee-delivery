@@ -58,7 +58,7 @@ export function CoffeeCard({
       </DescriptionContainer>
 
       <CardFooter>
-        <CoffeePrice>{formatMoney(coffee.price)}</CoffeePrice>
+        <CoffeePrice>{formatMoney(coffee.price, '')}</CoffeePrice>
 
         <ActionsContainer>
           <Counter

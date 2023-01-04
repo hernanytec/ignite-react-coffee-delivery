@@ -1,18 +1,22 @@
 import { createContext, ReactNode, useReducer } from 'react'
+import { CheckoutFormData } from '../pages/Checkout'
 import {
   addItemToCartAction,
   decrementItemInCartAction,
   incrementItemInCartAction,
   removeItemFromCartAction,
+  setCheckoutInfoAction,
 } from '../reducers/orders/actions'
 import { CartItem, OrderReducer } from '../reducers/orders/reducers'
 
 interface OrderContextType {
   cartList: CartItem[]
+  checkoutInfo?: CheckoutFormData
   addItemToCart: (cartItem: CartItem) => void
   decrementItemInCart: (cartItemId: string) => void
   incrementItemInCart: (cartItemId: string) => void
   removeItemFromCart: (cartItemId: string) => void
+  setCheckoutInfo: (info: CheckoutFormData) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -24,7 +28,7 @@ interface OrderContextProviderProps {
 export function OrderContextProvider({ children }: OrderContextProviderProps) {
   const [state, dispatch] = useReducer(OrderReducer, { cartList: [] })
 
-  const { cartList } = state
+  const { cartList, checkoutInfo } = state
 
   function addItemToCart(item: CartItem) {
     dispatch(addItemToCartAction(item))
@@ -42,14 +46,20 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(removeItemFromCartAction(cartItemId))
   }
 
+  function setCheckoutInfo(info: CheckoutFormData) {
+    dispatch(setCheckoutInfoAction(info))
+  }
+
   return (
     <OrderContext.Provider
       value={{
         cartList,
+        checkoutInfo,
         addItemToCart,
         incrementItemInCart,
         decrementItemInCart,
         removeItemFromCart,
+        setCheckoutInfo,
       }}
     >
       {children}

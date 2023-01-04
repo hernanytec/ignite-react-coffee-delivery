@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import EmptyCart from '../../../../assets/empty-cart.svg'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { formatMoney } from '../../../../utils/formatters'
+import { randomNumberGenerator } from '../../../../utils/generators'
 import { SelectedCoffee } from './components/SelectedCoffee'
 import {
   ConfirmOrderButton,
@@ -16,7 +17,7 @@ import {
 } from './styles'
 
 export function SelectedCoffees() {
-  const { formState } = useFormContext()
+  const { watch, formState } = useFormContext()
 
   const {
     cartList,
@@ -29,6 +30,8 @@ export function SelectedCoffees() {
     (acc, cartItem) => acc + cartItem.coffee.price * cartItem.counter,
     0,
   )
+
+  const cep = watch('cep')
 
   return (
     <SelectedCoffeesContainer>
@@ -63,10 +66,12 @@ export function SelectedCoffees() {
               <span>{formatMoney(totalItemsCost)}</span>
             </PriceItem>
 
-            <PriceItem>
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </PriceItem>
+            {cep && (
+              <PriceItem>
+                <span>Entrega</span>
+                <span>{formatMoney(randomNumberGenerator({ max: 10 }))}</span>
+              </PriceItem>
+            )}
 
             <PriceTotal>
               <span>Total</span>
